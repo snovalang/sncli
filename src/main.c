@@ -66,7 +66,7 @@ static int run_compiler_command(int argc, char **argv) {
     }
 
     if (!found) {
-        strncpy(comp_path, "sncli" EXE_EXT, sizeof(comp_path) - 1);
+        strncpy(comp_path, "snovac" EXE_EXT, sizeof(comp_path) - 1);
     }
 
     /* Build argument array */
@@ -95,17 +95,21 @@ static int run_compiler_command(int argc, char **argv) {
 }
 
 int main(int argc, char **argv) {
+#ifdef _WIN32
+    SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+#endif
     setup_environment();
 
     if (argc < 2) {
-        printf("sncli %s — Snovalang Unified CLI\n\n", SNCLI_VERSION);
-        printf("Uso:\n");
-        printf("  sncli run   <arquivo.snova|--project>   Executa código Snovalang com a runtime integrada\n");
-        printf("  sncli build <arquivo.snova|--project>   Compila para binário nativo embutindo o runtime\n");
-        printf("  sncli check <arquivo.snova|--project>   Valida tipos, sintaxe e regras arquiteturais\n");
-        printf("  sncli get   [url]                       Gerencia e baixa dependências externas\n");
-        printf("  sncli tidy                              Organiza módulos e dependências no mod.sno\n");
-        printf("  sncli --version                         Exibe a versão do sncli\n");
+        printf("sncli %s - Snovalang Unified CLI\n\n", SNCLI_VERSION);
+        printf("Usage:\n");
+        printf("  sncli run   <file.snova|--project>   Execute Snovalang code with integrated runtime\n");
+        printf("  sncli build <file.snova|--project>   Compile to native standalone executable\n");
+        printf("  sncli check <file.snova|--project>   Validate types, syntax and architecture\n");
+        printf("  sncli get   [url]                    Manage and download dependencies\n");
+        printf("  sncli tidy                           Sync modules and dependencies in mod.sno\n");
+        printf("  sncli --version                      Show sncli version\n");
         return 0;
     }
 
