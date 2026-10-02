@@ -1,33 +1,35 @@
 # sncli — Snovalang Unified CLI
 
-`sncli` is the unified command-line toolchain and orchestrator for the Snovalang programming language. It seamlessly binds the compiler (`snovac`), the runtime (`snovart`), and the standard library (`snova-std`).
+`snl` is the command that drives the Snovalang compiler (`snovac`), the runtime (`snovart`), and the standard library (`snova-std`). This repository builds that wrapper. The installed command name is `snl`.
 
-## Installation & Build
+## Build
+
+This repository has no separate install script. Build the wrapper with:
 
 ```bash
 make
 ```
 
-Produces `bin/sncli` (or `bin/sncli.exe` on Windows).
+That writes `bin/snl` (or `bin/snl.exe` on Windows). The `snovac` repository installs the same command as `snl` via `install.sh`, `install.ps1`, or `make install`.
 
 ## Usage
 
 ```bash
 # Run a Snovalang file or project with embedded runtime
-sncli run <file.snova|--project>
+snl run <file.snova|--project>
 
 # Compile to a standalone native binary
-sncli build <file.snova|--project> [-o output]
+snl build <file.snova|--project> [-o output]
 
 # Verify types, syntax, and strict architectural rules
-sncli check <file.snova|--project>
+snl check <file.snova|--project>
 
 # Manage dependencies
-sncli get [url]
-sncli tidy
+snl get [url]
+snl tidy
 
 # Check version
-sncli --version
+snl --version
 ```
 
 ## License
