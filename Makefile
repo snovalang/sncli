@@ -1,5 +1,5 @@
 CC      ?= cc
-CFLAGS  ?= -std=c11 -O2 -Wall -Wextra
+CFLAGS  ?= -std=c11 -O2 -Wall -Wextra -D_DEFAULT_SOURCE
 BUILD   ?= build
 BIN_DIR ?= bin
 
@@ -9,7 +9,7 @@ else
   EXE :=
 endif
 
-TARGET = $(BIN_DIR)/sncli$(EXE)
+TARGET = $(BIN_DIR)/snl$(EXE)
 
 .PHONY: all clean
 
@@ -17,7 +17,7 @@ all: $(TARGET)
 
 $(TARGET): src/main.c | $(BIN_DIR)
 	$(CC) $(CFLAGS) -o $@ src/main.c
-	@echo "✓ sncli CLI pronto em $(TARGET)"
+	@echo "snl written to $(TARGET)"
 
 $(BIN_DIR):
 ifeq ($(OS),Windows_NT)
