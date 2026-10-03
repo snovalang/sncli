@@ -1,4 +1,4 @@
-# sncli — Snovalang Unified CLI
+# snl — Snovalang command
 
 `snl` is the command that drives the Snovalang compiler (`snovac`), the runtime (`snovart`), and the standard library (`snova-std`). This repository builds that wrapper. The installed command name is `snl`.
 
@@ -46,13 +46,13 @@ That writes `bin/snl` (or `bin/snl.exe` on Windows).
 
 ```bash
 # Run a Snovalang file or project with embedded runtime
-snl run <file.snova|--project>
+snl run <file.snl|file.sns|--project>
 
 # Compile to a standalone native binary
-snl build <file.snova|--project> [-o output]
+snl build <file.snl|file.sns|--project> [-o output]
 
 # Verify types, syntax, and strict architectural rules
-snl check <file.snova|--project>
+snl check <file.snl|file.sns|--project>
 
 # Manage dependencies
 snl get [url]
