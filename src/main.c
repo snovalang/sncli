@@ -13,7 +13,7 @@
   #define EXE_EXT ""
 #endif
 
-#define SNCLI_VERSION "0.1.0"
+#define SNL_VERSION "0.1.0"
 
 static void setup_environment(void) {
     if (!getenv("SNOVA_STD_PATH")) {
@@ -49,9 +49,6 @@ static int run_compiler_command(int argc, char **argv) {
         "snovac/build/snl" EXE_EXT,
         "../snovac/build/snl" EXE_EXT,
         "../../snovac/build/snl" EXE_EXT,
-        "snovac/build/sncli" EXE_EXT,
-        "../snovac/build/sncli" EXE_EXT,
-        "../../snovac/build/sncli" EXE_EXT,
         "snovac/build/snovac" EXE_EXT,
         "../snovac/build/snovac" EXE_EXT,
         NULL
@@ -105,11 +102,11 @@ int main(int argc, char **argv) {
     setup_environment();
 
     if (argc < 2) {
-        printf("snl %s - Snovalang Unified CLI\n\n", SNCLI_VERSION);
+        printf("snl %s - Snovalang Unified CLI\n\n", SNL_VERSION);
         printf("Usage:\n");
-        printf("  snl run   <file.snova|--project>   Execute Snovalang code with integrated runtime\n");
-        printf("  snl build <file.snova|--project>   Compile to native standalone executable\n");
-        printf("  snl check <file.snova|--project>   Validate types, syntax and architecture\n");
+        printf("  snl run   <file.snl|file.sns|--project>   Execute a Snovalang source or script\n");
+        printf("  snl build <file.snl|file.sns|--project>   Compile to native standalone executable\n");
+        printf("  snl check <file.snl|file.sns|--project>   Validate types, syntax and architecture\n");
         printf("  snl get   [url]                    Manage and download dependencies\n");
         printf("  snl tidy                           Sync modules and dependencies in mod.sno\n");
         printf("  snl --version                      Show snl version\n");
@@ -117,7 +114,7 @@ int main(int argc, char **argv) {
     }
 
     if (strcmp(argv[1], "--version") == 0 || strcmp(argv[1], "-V") == 0) {
-        printf("snl %s (Snovalang Toolchain & CLI)\n", SNCLI_VERSION);
+        printf("snl %s (Snovalang Toolchain & CLI)\n", SNL_VERSION);
         return 0;
     }
 
